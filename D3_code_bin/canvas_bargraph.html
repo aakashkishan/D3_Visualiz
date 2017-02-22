@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> D3 Code Samples | D3 Code Examples | D3 Code Bin </title>     
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.5.0/d3.min.js"></script>   
+    </head>
+    <body>
+        <script>
+
+            //Canvas Variables.
+            var canvasHeight = 1000;
+            var canvasWidth = 1000;
+
+            //BarGraph Height.
+            var barHeight = 30;
+
+            //Data Set for the Bar Graph.
+            var dataSet = [5, 9, 7];
+            var scale = 100;
+
+            var canvas = d3.select('body')
+                            .append('svg') //Appends a SVG Element
+                            .attr('width', canvasWidth)
+                            .attr('height', canvasHeight) ;
+
+            var bars = canvas.selectAll("rect") //Select All Rectangular Objects in the Canvas
+                                .data(dataSet) //Add the Data Set as the data.
+                                .enter() //To add placeholders for the undeclared rectangles.
+                                    .append("rect") //Append a 'rect' to each placeholder by enter().
+                                    .attr("width", function(dataElement) {
+                                        return dataElement * scale; //Return the width as scale times the dataElement of the dataSet.
+                                    })
+                                    .attr("height", barHeight)
+                                    .attr("y", function(dataElement, index) {
+                                        return index * scale; //Return the y-axis location as scale times the index of the dataSet.
+                                    });
+
+        </script>
+    </body>
+</html>
