@@ -12,11 +12,11 @@
             var canvasWidth = 1000;
 
             //BarGraph Height.
-            var barHeight = 30;
-            var verticalScale = 100;
-            var horizontalScale = d3.scale.linear() //Scale is Linear
-                                        .domain([0, 14]) // domain(smallestValue, largestValue) : Before the Appliaction of Scale.
-                                        .range([0, canvasWidth]); // range(smallestValueInRange, largestValueInRange) : After the Appliaction of Scale.
+            //var barHeight = 30;
+            //var verticalScale = 100;
+            //var horizontalScale = d3.scale.linear() //Scale is Linear
+            //                            .domain([0, 14]) // domain(smallestValue, largestValue) : Before the Appliaction of Scale.
+            //                           .range([0, canvasWidth]); // range(smallestValueInRange, largestValueInRange) : After the Appliaction of Scale.
 
             //Data Set for the Bar Graph.
             var dataSet = [5, 9, 7, 14];
@@ -31,7 +31,7 @@
                                 .enter() //To add placeholders for the undeclared rectangles.
                                     .append("rect") //Append a 'rect' to each placeholder by enter().
                                     .attr("width", function(dataElement) {
-                                        return horizontalScale(dataElement); //Return the width as horiontalScale times the dataElement of the dataSet.
+                                        return dataElement * verticalScale; //Return the width as horiontalScale times the dataElement of the dataSet.
                                     })
                                     .attr("height", barHeight)
                                     .attr("y", function(dataElement, index) {
